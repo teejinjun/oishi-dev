@@ -1,0 +1,265 @@
+/*!
+ * baguetteBox.js
+ * @author  feimosi
+ * @version 1.5.0
+ * @url https://github.com/feimosi/baguetteBox.js
+ */
+ @font-face {
+  font-family: 'lemonyellowsun';
+  src: url('../fonts/dk_lemon_yellow_sun-webfont.eot');
+  src: url('../fonts/dk_lemon_yellow_sun-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/dk_lemon_yellow_sun-webfont.woff2') format('woff2'), url('../fonts/dk_lemon_yellow_sun-webfont.woff') format('woff'), url('../fonts/dk_lemon_yellow_sun-webfont.ttf') format('truetype'), url('../fonts/dk_lemon_yellow_sun-webfont.svg#dk_lemon_yellow_sunregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'signikalight';
+  src: url('../fonts/signika-light.eot');
+  src: url('../fonts/signika-light.eot?#iefix') format('embedded-opentype'), 
+  url('../fonts/signika-light.woff') format('woff'),
+  url('../fonts/signika-light.woff2') format('woff2'), 
+  url('../fonts/signika-light.ttf') format('truetype'), 
+  url('../fonts/signika-light.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/*.gallery {
+    text-align: center;
+}
+.gallery:after {
+    content: '';
+    display: block;
+    height: 2px;
+    margin: 2em 0 1.4em;
+    background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(95,173,10,1) 50%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(95,173,10,1) 50%, rgba(0, 0, 0, 0) 100%);
+}
+.gallery img {
+    width: auto;
+    height:100%;
+}
+.gallery a {
+    width: 240px;
+    height: 240px;
+    display: inline-block;
+    overflow: hidden;
+    margin: 4px 6px;
+    box-shadow: 0 0 4px -1px #000;
+}*/
+
+#baguetteBox-overlay {
+  display: none;
+  opacity: 0;
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000000;
+  background-color: #222;
+  background-color: rgba(0, 0, 0, 0.8);
+  -webkit-transition: opacity 0.5s ease;
+          transition: opacity 0.5s ease; }
+  #baguetteBox-overlay.visible {
+    opacity: 1; }
+  #baguetteBox-overlay .full-image {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center; }
+    #baguetteBox-overlay .full-image figure {
+      display: inline;
+      margin: 0;
+      height: 100%; }
+    #baguetteBox-overlay .full-image img {
+      display: inline-block;
+      width: auto;
+      height: auto;
+      max-height: 100%;
+      max-width: 100%;
+      vertical-align: middle;
+      -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+           box-shadow: 0 0 8px rgba(0, 0, 0, 0.6); }
+    #baguetteBox-overlay .full-image figcaption {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      line-height: 1.8;
+      white-space: normal;
+      font-size:30px;
+      color: #ccc;
+      background-color: #000;
+      background-color: rgba(0, 0, 0, 0.6);
+      font-family: 'lemonyellowsun'; }
+    #baguetteBox-overlay .full-image:before {
+      content: "";
+      display: inline-block;
+      height: 50%;
+      width: 1px;
+      margin-right: -1px; }
+
+#baguetteBox-slider {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  white-space: nowrap;
+  -webkit-transition: left 0.4s ease, -webkit-transform 0.4s ease;
+          transition: left 0.4s ease, -moz-transform 0.4s ease;
+          transition: left 0.4s ease, transform 0.4s ease; }
+  #baguetteBox-slider.bounce-from-right {
+    -webkit-animation: bounceFromRight 0.4s ease-out;
+            animation: bounceFromRight 0.4s ease-out; }
+  #baguetteBox-slider.bounce-from-left {
+    -webkit-animation: bounceFromLeft 0.4s ease-out;
+            animation: bounceFromLeft 0.4s ease-out; }
+
+@-webkit-keyframes bounceFromRight {
+  0% {
+    margin-left: 0; }
+  50% {
+    margin-left: -30px; }
+  100% {
+    margin-left: 0; } }
+
+@keyframes bounceFromRight {
+  0% {
+    margin-left: 0; }
+  50% {
+    margin-left: -30px; }
+  100% {
+    margin-left: 0; } }
+
+@-webkit-keyframes bounceFromLeft {
+  0% {
+    margin-left: 0; }
+  50% {
+    margin-left: 30px; }
+  100% {
+    margin-left: 0; } }
+
+@keyframes bounceFromLeft {
+  0% {
+    margin-left: 0; }
+  50% {
+    margin-left: 30px; }
+  100% {
+    margin-left: 0; } }
+
+.baguetteBox-button#next-button{
+  top: 50%;
+  top: calc(50% - 30px);
+  width: 69px;
+  height: 72px; 
+  background: url('../images/gallery/Btnright_Arrow.png')}
+  .baguetteBox-button#previous-button {
+  top: 50%;
+  top: calc(50% - 30px);
+  width: 69px;
+  height: 72px; 
+  background: url('../images/gallery/Btnleft_Arrow.png')}
+
+.baguetteBox-button {
+  position: absolute;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  -moz-border-radius: 15%;
+       border-radius: 15%;
+  background-color: #323232;
+  background-color: rgba(50, 50, 50, 0.5);
+  color: #ddd;
+  font: 1.6em sans-serif;
+  -webkit-transition: background-color 0.4s ease;
+          transition: background-color 0.4s ease; }
+  .baguetteBox-button:hover {
+    background-color: rgba(50, 50, 50, 0.9); 
+    opacity: 0.5;
+  }
+  .baguetteBox-button#next-button {
+    right: 2%; }
+  .baguetteBox-button#previous-button {
+    left: 2%; }
+  .baguetteBox-button#close-button {
+    top: 20px;
+    right: 2%;
+    right: calc(2% + 6px);
+    width: 60px;
+    height: 50px;
+    background: url('../images/gallery/closebutton.png') center center;
+    background-size: 80%;
+    background-repeat: no-repeat;
+    }
+  .baguetteBox-button svg {
+    position: absolute;
+    left: 0;
+    top: 0; }
+
+/*
+    Preloader
+    Borrowed from http://tobiasahlin.com/spinkit/
+*/
+.spinner {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -20px;
+  margin-left: -20px; }
+
+.double-bounce1, .double-bounce2 {
+  width: 100%;
+  height: 100%;
+  -moz-border-radius: 50%;
+       border-radius: 50%;
+  background-color: #fff;
+  opacity: .6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-animation: bounce 2s infinite ease-in-out;
+          animation: bounce 2s infinite ease-in-out; }
+
+.double-bounce2 {
+  -webkit-animation-delay: -1.0s;
+          animation-delay: -1.0s; }
+
+@-webkit-keyframes bounce {
+  0%, 100% {
+    -webkit-transform: scale(0);
+            transform: scale(0); }
+  50% {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@keyframes bounce {
+  0%, 100% {
+    -webkit-transform: scale(0);
+       -moz-transform: scale(0);
+            transform: scale(0); }
+  50% {
+    -webkit-transform: scale(1);
+       -moz-transform: scale(1);
+            transform: scale(1); } }
+
+.title-year{
+  color:#ffffff;
+  font-family: 'lemonyellowsun';
+  font-size:2em;
+  background: url('../images/gallery/galleryheadline.jpg') no-repeat center center;
+  padding: 10px;
+  width: 230px;
+  text-align: center;
+  margin: 30px 0;
+  text-transform: uppercase;
+  font-weight:bold;
+}
