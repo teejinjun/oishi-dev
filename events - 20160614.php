@@ -68,25 +68,44 @@
           <div class="row ">
             <div class="col-md-12">
               <div class="events wow fadeInUp animated" style="visibility: visible; animation-duration: 0.6s; animation-delay: 0.1s; animation-name: fadeInUp;" data-wow-duration="0.6s" data-wow-delay="0.1s">
-              <div class="coming-soon">
-                <img src="images/events/coming-soon.png" />
-              </div>
-            <!--   <div id="owl-demo" class="owl-carousel">
 
-                <div class="item">
+              <div id="owl-demo" class="owl-carousel">
+
+               <!--  <div class="item">
                   <img src="images/events/Oishi_animax_Roadshow.png" />
                   <p>Join OISHI and OO-Kun at the Animax Food-Truck Roadshow to get your limited edition Animax merchandise. You can also get a delicious Japanese Meal Set at only RM 10. See you there!</p>
                 </div>
                 <div class="item">
                   <img src="images/events/Oishi_animax_carnival.png" />
                   <p>The Animax Carnival Malaysia is back for the 5th year. Come on by (with your cosplay costume, if you like) to enjoy awesome performances by our guest artists and fill up your tummy with some yummy food. <a href="http://www.animax-asia.com/" target="_blank">Find out more</a>.</p>
-                </div>
+                </div> -->
                 <div class="item">
                   <img src="images/events/grand-prize.png" />
                   <p>Want to win prizes worth up to RM250,000*? Just take part in the “Lebih Sihat, Lebih Mewah” contest by getting OISHI from any store. Yes, it’s that easy. Good luck! <br><a href="http://goo.gl/6ZLds8" target="_blank">Find out more.</a></p>
                   
                 </div>
-              </div> -->
+
+              </div>
+                <!-- <div class="flexslider">
+                  <ul class="slides">
+                    <li  class="flex-caption">
+                      <img src="images/events/Oishi_animax_Roadshow.png" />
+                      <p>Adventurer Donut</p>
+                    </li>
+                     <li  class="flex-caption">
+                      <img src="images/events/Oishi_animax_carnival.png" />
+                      <p>Adventurer Donut</p>
+                    </li>
+                     <li  class="flex-caption">
+                      <img src="images/events/grand-prize.png" />
+                      <p>Want to win prizes worth up to RM250,000*? Just take part in the “Lebih Sihat, Lebih Mewah” contest by getting OISHI from any store. Yes, it’s that easy. Good luck!</p>
+                      <p>Find out how to win it here: <a href="http://goo.gl/6ZLds8" target="_blank">http://goo.gl/6ZLds8</a></p>
+                    </li>
+                  </ul>
+                </div> -->
+                <!-- <img src="images/events/grand-prize.png">
+                  <p>Want to win prizes worth up to RM250,000*? Just take part in the “Lebih Sihat, Lebih Mewah” contest by getting OISHI from any store. Yes, it’s that easy. Good luck!</p>
+                  <p>Find out how to win it here: <a href="http://goo.gl/6ZLds8" target="_blank">http://goo.gl/6ZLds8</a></p> -->
               </div>
             </div>
           </div>
